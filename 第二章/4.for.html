@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="Application">
+    <ul>
+        <template v-for="(item,index) in handle(list)">
+            <div>{{index + "." + item.name}}</div>
+            <div>{{item.num}}</div>
+        </template>
+    </ul>
+    <ol>
+        <li v-for="(value,key,index) in preson" :key="index">
+            {{key}}:{{value}}:{{index}}
+        </li>
+    </ol>
+    <button @click="click">
+            逆序
+        </button>
+</div>
+<script>
+    const App = {
+        data() {
+            return {
+                list: [
+                    {
+                        name: "珲少",
+                        num: "151xxxxxxxx"
+                    },
+                    {
+                        name: "Jaki",
+                        num: "151xxxxxxxx"
+                    },
+                    {
+                        name: "Lucy",
+                        num: "151xxxxxxxx"
+                    },
+                    {
+                        name: "Monki",
+                        num: "151xxxxxxxx"
+                    },
+                    {
+                        name: "Bei",
+                        num: "156xxxxxxxx"
+                    }
+                ],
+                preson: {
+                    name: "珲少",
+                    age: "00",
+                    num: "151xxxxxxxx",
+                    emali: "xxxx@xx.com"
+                }
+            }
+        },
+        methods: {
+                click() {
+                    this.list.reverse()
+                },
+                handle(l) {
+                    return l.filter(obj => obj.name != "珲少")
+                }
+            }
+    }
+    Vue.createApp(App).mount("#Application")
+</script>
+</body>
+</html>
